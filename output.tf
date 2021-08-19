@@ -17,3 +17,13 @@ output "domain_name" {
   description = "The name of the Elasticsearch domain."
   value       = aws_elasticsearch_domain.verizonelasticsearch.domain_name
 }
+
+output "kibana_username" {
+  description = "The name of the Elasticsearch domain."
+  value       = aws_elasticsearch_domain.verizonelasticsearch.advanced_security_options[0].master_user_options[0].master_user_name
+}
+
+output "kibana_password" {
+  description = "The name of the Elasticsearch domain."
+  value       = aws_elasticsearch_domain.verizonelasticsearch.advanced_security_options[0].master_user_options[0].master_user_password
+}

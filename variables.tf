@@ -10,6 +10,11 @@ variable "es_version" {
 
 variable "node_instance_type" {
   description = "Instance type of cluster node."
+  default     = "m4.large.elasticsearch"
+}
+
+variable "master_instance_type" {
+  description = "Instance type of cluster node."
   default     = "t3.small.elasticsearch"
 }
 

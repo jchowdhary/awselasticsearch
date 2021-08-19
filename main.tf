@@ -46,8 +46,24 @@ CONFIG
   }
 
   cluster_config {
+    dedicated_master_count   = 3
+    dedicated_master_enabled = true
+    dedicated_master_type    = var.master_instance_type
+
+    instance_count = 3
     instance_type = var.node_instance_type
+
+    warm_count               = 2
+    warm_enabled             = true
+    warm_type                = "ultrawarm1.medium.elasticsearch"
+    
+    zone_awareness_enabled   = true    
+    zone_awareness_config {
+      availability_zone_count = 3
+    }
   }
+
+
   
   advanced_security_options {
       enabled                        = true
@@ -70,13 +86,14 @@ CONFIG
     }    
 
 
-      domain_endpoint_options {
-        #  custom_endpoint                 = (known after apply)
-        #  custom_endpoint_certificate_arn = (known after apply)
-        #  custom_endpoint_enabled         = (known after apply)
-          enforce_https                   = true
-          tls_security_policy             = "Policy-Min-TLS-1-2-2019-07"
-        }
+   domain_endpoint_options {
+   #  custom_endpoint                 = (known after apply)
+   #  custom_endpoint_certificate_arn = (known after apply)
+   #  custom_endpoint_enabled         = (known after apply)
+      enforce_https                   = true
+      tls_security_policy             = "Policy-Min-TLS-1-2-2019-07"
+   }
+
   snapshot_options {
     automated_snapshot_start_hour = 23
   }
