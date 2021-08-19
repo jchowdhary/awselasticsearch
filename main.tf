@@ -2,6 +2,42 @@ resource "aws_elasticsearch_domain" "verizonelasticsearch" {
   domain_name           = var.my_domain
   elasticsearch_version = var.es_version
 
+#   access_policies = <<CONFIG
+# {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Action": "es:*",
+#             "Principal": "*",
+#             "Effect": "Allow",
+#             "Resource": "arn:aws:es:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:domain/${var.domain}/*"
+#         }
+#     ]
+# }
+# CONFIG
+
+ access_policies = <<CONFIG
+ {
+
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "*"
+        ]
+      },
+      "Action": [
+        "es:*"
+      ],
+      "Resource": "arn:aws:es:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:domain/${var.my_domain}/*"
+    }
+  ]
+
+ }
+CONFIG
+
   ebs_options {
     ebs_enabled = var.ebs_volume_size > 0 ? true : false
     volume_size = var.ebs_volume_size
@@ -30,6 +66,7 @@ resource "aws_elasticsearch_domain" "verizonelasticsearch" {
 
     encrypt_at_rest {
         enabled    = true
+       # kms_key_id = "aws/es"
     }    
 
 
