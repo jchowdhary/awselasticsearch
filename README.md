@@ -12,4 +12,4 @@ Following actions will be incorporated in Terraform HCL language
 ![verizonesdomain_ultrawarm2](https://user-images.githubusercontent.com/12508591/130062092-388782f0-508e-4f0d-8fe1-e51ba950e36b.jpg)
 ![verizonesdomain_ultrawarm1](https://user-images.githubusercontent.com/12508591/130062102-3a7de2c5-b373-4b91-b972-fee4b61a5056.jpg)
 
-NOTE: POC 2 work regarding S3 manipulation using AWS Lambda trigger is worked on this link https://github.com/jchowdhary/s3bucketmanipulation
+NOTE: POC 2 work regarding S3 manipulation using AWS Lambda trigger is worked on this link https://github.com/jchowdhary/tf-lambda
